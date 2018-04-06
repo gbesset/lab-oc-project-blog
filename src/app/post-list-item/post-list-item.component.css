@@ -1,3 +1,9 @@
 .blog{
 	margin-top:5px;
 }
+
+.blogDate{
+	margin-top:-40px;
+	float:right;
+	color:grey;
+}
