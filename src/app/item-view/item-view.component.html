@@ -3,7 +3,7 @@
 <p>
 {{ content }}
 </p>
-<span>Il y a {{ loveIts }} like</span>
-<span>Il y a {{ loveIts }} dislike</span>
+<span *ngIf="loveIts>=0">Il y a {{ loveIts }} like</span>
+<span *ngIf="loveIts<0">Il y a {{ loveIts*-1 }} dislike</span>
 <br/>
 <a routerLink="/posts">Retours au posts</a>
