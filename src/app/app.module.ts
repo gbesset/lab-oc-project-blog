@@ -14,6 +14,7 @@ import { AuthService } from './services/auth.service';
 import { AuthComponent } from './auth/auth.component';
 import { ItemViewComponent } from './item-view/item-view.component';
 import { ErrorComponent } from './error/error.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 const appRoutes: Routes = [
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'new',
-    component: NewPostComponent
+    component: NewPostComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'auth',
@@ -64,7 +66,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule
   ],
-  providers: [BlogService, AuthService],
+  providers: [BlogService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
