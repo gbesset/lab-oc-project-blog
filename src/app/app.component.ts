@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/Rx';
 
 
@@ -8,8 +9,9 @@ import 'rxjs/Rx';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit, OnDestroy{
 	connectedFromSeconds: number;
+	counterSubscription: Subscription;
 
 	constructor() {} 
  
@@ -20,7 +22,7 @@ export class AppComponent implements OnInit{
 
    	  //observer le compteur
    	  //Subscribe permet observer un observable et réagir a ses changements
-   	  counter.subscribe(
+   	  this.counterSubscription = counter.subscribe(
    	  	//changement valeur (recoit les données)
    	  	(value: number) => {
    	  		this.connectedFromSeconds = value;
@@ -34,6 +36,11 @@ export class AppComponent implements OnInit{
    	  	() => {
    	  		console.log('Observale completé');
    	  	}
-   	  )
+   	  );
+   }
+
+   ngOnDestroy(){
+   	//Pour éviteer pb bug infiny : Détruire la subscription a la fin de la vie du Component
+   	this.counterSubscription.unsubscribe();
    }
 }
