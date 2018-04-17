@@ -13,6 +13,7 @@ import { BlogViewComponent } from './blog-view/blog-view.component';
 import { AuthService } from './services/auth.service';
 import { AuthComponent } from './auth/auth.component';
 import { ItemViewComponent } from './item-view/item-view.component';
+import { ErrorComponent } from './error/error.component';
 
 
 const appRoutes: Routes = [
@@ -32,8 +33,19 @@ const appRoutes: Routes = [
   {
     path: 'item/:id',
     component: ItemViewComponent
+  },
+  {
+    path: 'not-found',
+    component: ErrorComponent
+  },
+  //Wild card => ** => A mettre à la fin !!!!
+  // verifie toutes les routes et si ne trouve pas, redirige (en dernier donc) vers /not-found.......
+  {
+    path: '**',
+    redirectTo: '/not-found'
   }
 ];
+
 
 
 @NgModule({
@@ -44,7 +56,8 @@ const appRoutes: Routes = [
     NewPostComponent,
     BlogViewComponent,
     AuthComponent,
-    ItemViewComponent
+    ItemViewComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
