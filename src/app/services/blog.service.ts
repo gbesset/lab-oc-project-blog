@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class BlogService {
 
-	posts = [
+  postSubject = new Subject<any[]>();
+
+	private posts = [
   	{
       id: 3,
   		title: 'Blog post #3',
@@ -36,12 +39,21 @@ export class BlogService {
 
   constructor() { }
 
+  emitPostSubject(){
+    //next : force le subject a emetre ce qu'on lii passe comme argument (ici liste des POsts
+    //slice : copie de l'array)
+    this.postSubject.next(this.posts.slice());
+  }
+
+
   likePost(index: number){
   	this.posts[index].loveIts++;
+    this.emitPostSubject();
   }
 
   dislikePost(index: number){
   	this.posts[index].loveIts--;;
+    this.emitPostSubject();
   }
 
   getPostById(id: number){
@@ -54,11 +66,13 @@ export class BlogService {
   }
 
   addNewPost(){
-
+    //todo
+    this.emitPostSubject();
   }
 
   removePost(){
-
+    //todo
+    this.emitPostSubject();
   }
 
 }
