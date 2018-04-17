@@ -10,6 +10,8 @@ import { NewPostComponent } from './new-post/new-post.component';
 
 import { RouterModule, Routes } from '@angular/router';
 import { BlogViewComponent } from './blog-view/blog-view.component';
+import { AuthService } from './services/auth.service';
+import { AuthComponent } from './auth/auth.component';
 
 
 const appRoutes: Routes = [
@@ -21,6 +23,10 @@ const appRoutes: Routes = [
   {
     path: 'new',
     component: NewPostComponent
+  },
+  {
+    path: 'auth',
+    component: AuthComponent
   }
 ];
 
@@ -31,14 +37,15 @@ const appRoutes: Routes = [
     PostListComponent,
     PostListItemComponent,
     NewPostComponent,
-    BlogViewComponent
+    BlogViewComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule
   ],
-  providers: [BlogService],
+  providers: [BlogService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
