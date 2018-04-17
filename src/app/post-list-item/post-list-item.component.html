@@ -5,6 +5,7 @@
 				}">
   <h4>{{ title }}</h4><span class="blogDate">{{ created_at | date:'dd/MM/yyyy HH:mm' }}</span>
   <p>{{ content }}</p>
+  <p><a routerLink="/item/{{id}}">Détails.....</a></p>
   <button class="btn btn-success" (click)="onLike()">Like it!</button>
   <button class="btn btn-danger" (click)="onDislike()">Don't like it</button>
 </li>

@@ -2,6 +2,6 @@
 <div class="col-10">
   <h2>Blog posts</h2>
   <ul class="list-group" *ngFor="let p of posts; let i =index">
-    <app-post-list-item [indexOfPost]="i" [title]="p.title" [content]="p.content" [loveIts]="p.loveIts" [created_at]="p.created_at"></app-post-list-item>
+    <app-post-list-item [indexOfPost]="i" [title]="p.title" [content]="p.content" [loveIts]="p.loveIts" [created_at]="p.created_at" [id]="p.id"></app-post-list-item>
   </ul>
 </div>

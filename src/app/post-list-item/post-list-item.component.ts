@@ -13,6 +13,7 @@ export class PostListItemComponent implements OnInit {
   @Input() loveIts: number;
   @Input() created_at: Date;
   @Input() indexOfPost: number;
+  @Input() id: number;
 
   constructor(private _blogService: BlogService) { }
 

@@ -5,6 +5,7 @@ export class BlogService {
 
 	posts = [
   	{
+      id: 3,
   		title: 'Blog post #3',
   		content: `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
   				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -14,6 +15,7 @@ export class BlogService {
   		created_at: new Date('2018-04-06T17:00:00')
   	},
   	{
+    id: 2,
 		title: 'Blog post #2',
   		content: `Sed (saepe enim redeo ad Scipionem, cuius omnis sermo erat de amicitia) querebatur, 
   				  quod omnibus in rebus homines diligentiores essent; capras et oves quot quisque haberet,
@@ -23,6 +25,7 @@ export class BlogService {
   		created_at: new Date('2018-04-05T17:00:00')
   	},
   	{
+    id: 1,
 		title: 'Blog Post #1',
   		content: `Potest me solent diceret ob dissentientium videri a si videri dissentientium disputando rem a potest iracundiae
   					 solent mihi inquam sunt non videri dicas Triari iracundiae Epicureum mihi indignae pacto me.`,
@@ -39,6 +42,15 @@ export class BlogService {
 
   dislikePost(index: number){
   	this.posts[index].loveIts--;;
+  }
+
+  getPostById(id: number){
+    const postSearched = this.posts.find(
+      (postMsg) => {
+        return postMsg.id === id;
+      }
+     );
+    return postSearched
   }
 
   addNewPost(){
