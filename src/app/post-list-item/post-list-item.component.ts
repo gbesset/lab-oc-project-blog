@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BlogService } from '../services/blog.service';
 
 @Component({
   selector: 'app-post-list-item',
@@ -11,8 +12,9 @@ export class PostListItemComponent implements OnInit {
   @Input() content: string;
   @Input() loveIts: number;
   @Input() created_at: Date;
+  @Input() indexOfPost: number;
 
-  constructor() { }
+  constructor(private _blogService: BlogService) { }
 
   ngOnInit() {
   }
@@ -30,12 +32,11 @@ export class PostListItemComponent implements OnInit {
 
   }
  onLike(){
- 	//celui du service !!!
- 	this.loveIts++;
+   	this._blogService.likePost(this.indexOfPost);
  }
 
  onDislike(){
- 	this.loveIts--;
+ 	  this._blogService.dislikePost(this.indexOfPost);
  }
 
 }
