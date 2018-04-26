@@ -1,5 +1,6 @@
 
-  <div class="col-sm-8 col-sm-offset-2">
+ <div class="row">
+  <div class="col-8 col-offset-2">
   	<!-- pas besoin de reference locale-->
   	<form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
       <div class="form-group">
@@ -22,6 +23,7 @@
         		<option value="coca">Cafe</option>
         </select>
       </div>
-		<button class="btn btn-primary">Enregistrer</button>
+		<button class="btn btn-primary" [disabled]="userForm.invalid">Enregistrer</button>
     </form>
   </div>
+</div>
