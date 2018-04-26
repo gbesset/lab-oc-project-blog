@@ -8,7 +8,7 @@ export class BlogService {
 
 	private posts = [
   	{
-      id: 3,
+      id: 1,
   		title: 'Blog post #3',
   		content: `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
   				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -28,7 +28,7 @@ export class BlogService {
   		created_at: new Date('2018-04-05T17:00:00')
   	},
   	{
-    id: 1,
+    id: 3,
 		title: 'Blog Post #1',
   		content: `Potest me solent diceret ob dissentientium videri a si videri dissentientium disputando rem a potest iracundiae
   					 solent mihi inquam sunt non videri dicas Triari iracundiae Epicureum mihi indignae pacto me.`,
@@ -65,9 +65,21 @@ export class BlogService {
     return postSearched
   }
 
-  addNewPost(){
-    //todo
-    this.emitPostSubject();
+  addNewPost(title: string, content:string){
+    const post = {
+       id: 0,
+       title: '',
+       content: '',
+       loveIts: 0,
+       created_at: new Date()
+      };
+
+     post.title = title;
+     post.content = content;
+     post.id = this.posts[(this.posts.length-1)].id + 1;  //recupere id du dernier element de la liste et ajoute 1
+
+     this.posts.push(post);
+     this.emitPostSubject();
   }
 
   removePost(){

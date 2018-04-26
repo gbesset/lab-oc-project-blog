@@ -14,15 +14,4 @@ export class PostListComponent implements OnInit {
   ngOnInit() {
   }
 
-onAddBlog(){
-	var post = {
-		title: "a new post",
-		content: "this is a new message",
-		loveIts: 0,
-		created_at: new Date()
-	};
-
-	this.posts.push(post);
-}
-
 }
