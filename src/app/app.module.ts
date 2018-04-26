@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PostListComponent } from './post-list/post-list.component';
@@ -17,6 +17,7 @@ import { ErrorComponent } from './error/error.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserService } from './services/user.service';
+import { NewUserComponent } from './new-user/new-user.component';
 
 const appRoutes: Routes = [
   { path: '', component: BlogViewComponent },
@@ -32,6 +33,10 @@ const appRoutes: Routes = [
   {
     path: 'users',
     component: UserListComponent
+  },
+  {
+    path: 'new-user',
+    component: NewUserComponent
   },
   {
     path: 'auth',
@@ -65,12 +70,14 @@ const appRoutes: Routes = [
     AuthComponent,
     ItemViewComponent,
     ErrorComponent,
-    UserListComponent
+    UserListComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [BlogService, AuthService, AuthGuardService, UserService],
   bootstrap: [AppComponent]
