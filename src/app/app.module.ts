@@ -15,7 +15,8 @@ import { AuthComponent } from './auth/auth.component';
 import { ItemViewComponent } from './item-view/item-view.component';
 import { ErrorComponent } from './error/error.component';
 import { AuthGuardService } from './services/auth-guard.service';
-
+import { UserListComponent } from './user-list/user-list.component';
+import { UserService } from './services/user.service';
 
 const appRoutes: Routes = [
   { path: '', component: BlogViewComponent },
@@ -27,6 +28,10 @@ const appRoutes: Routes = [
     path: 'new',
     component: NewPostComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'users',
+    component: UserListComponent
   },
   {
     path: 'auth',
@@ -59,14 +64,15 @@ const appRoutes: Routes = [
     BlogViewComponent,
     AuthComponent,
     ItemViewComponent,
-    ErrorComponent
+    ErrorComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule
   ],
-  providers: [BlogService, AuthService, AuthGuardService],
+  providers: [BlogService, AuthService, AuthGuardService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
