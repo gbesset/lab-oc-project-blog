@@ -1,4 +1,4 @@
-<li [ngClass]="{'list-group-item blog': true,
+<li *ngIf="title" [ngClass]="{'list-group-item blog': true,
 				'list-group-item-success' : getFeedBack() === 'liked',
 				'list-group-item-danger' : getFeedBack() === 'disliked',
 				'' : getFeedBack() === 'default'
@@ -7,5 +7,6 @@
   <p>{{ content }}</p>
   <p><a routerLink="/item/{{id}}">Détails.....</a></p>
   <button class="btn btn-success" (click)="onLike()">Like it!</button>
-  <button class="btn btn-danger" (click)="onDislike()">Don't like it</button>
+  <button class="btn btn-warning" (click)="onDislike()">Don't like it</button>
+  <button class="btn btn-danger" (click)="onDelete()">SUPPRIMER</button>
 </li>

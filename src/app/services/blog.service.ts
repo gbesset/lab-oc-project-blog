@@ -56,6 +56,11 @@ export class BlogService {
     this.emitPostSubject();
   }
 
+ delete(index: number){
+    this.posts.splice(index,1);
+    this.emitPostSubject();
+  }
+
   getPostById(id: number){
     const postSearched = this.posts.find(
       (postMsg) => {

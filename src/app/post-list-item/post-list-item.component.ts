@@ -15,6 +15,7 @@ export class PostListItemComponent implements OnInit {
   @Input() indexOfPost: number;
   @Input() id: number;
 
+
   constructor(private _blogService: BlogService) { }
 
   ngOnInit() {
@@ -38,6 +39,10 @@ export class PostListItemComponent implements OnInit {
 
  onDislike(){
  	  this._blogService.dislikePost(this.indexOfPost);
+ }
+
+ onDelete(){
+   this._blogService.delete(this.indexOfPost);
  }
 
 }
